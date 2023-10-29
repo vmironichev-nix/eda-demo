@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Attribute",
+    "namespace": "com.nix.eda.demo.event",
+    "type": "record",
+    "fields": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "type": [
+          "null",
+          "boolean",
+          "int",
+          "long",
+          "float",
+          "double",
+          "bytes",
+          "string"
+        ]
+      }
+    ],
+    "default": null
+  },
+  {
+    "type": "record",
+    "name": "OrderEvent",
+    "namespace": "com.nix.eda.demo.event",
+    "fields": [
+      {
+        "name": "id",
+        "type": {
+          "type": "string",
+          "logicalType": "uuid"
+        }
+      },
+      {
+        "name": "timestamp",
+        "type": "long"
+      },
+      {
+        "name": "type",
+        "type": {
+          "type": "enum",
+          "name": "EventType",
+          "symbols": [
+            "OrderPlaced",
+            "OrderProcessed",
+            "OrderCancelled"
+          ]
+        }
+      },
+      {
+        "name": "attributes",
+        "type": [
+          {
+            "type": "array",
+            "items": "Attribute"
+          },
+          "null"
+        ]
+      }
+    ]
+  }
+]
