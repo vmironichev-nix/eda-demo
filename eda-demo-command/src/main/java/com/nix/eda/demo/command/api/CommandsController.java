@@ -22,19 +22,19 @@ public class CommandsController {
     }
 
     @RequestMapping(path = "place-order")
-    public ResponseEntity placeOrder(@RequestBody com.nix.eda.demo.command.api.Command command) {
+    public ResponseEntity placeOrder(@RequestBody Command command) {
         var eventId = orderEventService.create(command.getId(), ORDER_CREATED, command);
         return ResponseEntity.ok(Map.of("id", eventId));
     }
 
     @RequestMapping(path = "process-order")
-    public ResponseEntity processOrder(@RequestBody com.nix.eda.demo.command.api.Command command) {
+    public ResponseEntity processOrder(@RequestBody Command command) {
         var eventId = orderEventService.create(command.getId(), ORDER_CONFIRMED, command);
         return ResponseEntity.ok(Map.of("id", eventId));
     }
 
     @RequestMapping(path = "cancel-order")
-    public ResponseEntity cancelOrder(@RequestBody com.nix.eda.demo.command.api.Command command) {
+    public ResponseEntity cancelOrder(@RequestBody Command command) {
         var eventId = orderEventService.create(command.getId(), ORDER_CANCELLED, command);
         return ResponseEntity.ok(Map.of("id", eventId));
     }
