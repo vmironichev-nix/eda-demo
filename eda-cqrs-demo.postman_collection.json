@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "fcb6027f-55b3-44d8-b7c0-1513c562c733",
+		"name": "eda-cqrs-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "413397"
+	},
+	"item": [
+		{
+			"name": "commands - place order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"da193ff6-9952-4ae0-b5f0-69e6206cd53a\",\n    \"attributes\": {\n        \"type\": \"fpv drone - 10 inch\",\n        \"priceId\": \"f38c9b5a-617f-4242-be39-ec5111c03b1f\",\n        \"quantity\": 200\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:8089/commands/place-order",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"commands",
+						"place-order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commands - cancel order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"da193ff6-9952-4ae0-b5f0-69e6206cd53a\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8089/commands/cancel-order",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"commands",
+						"cancel-order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get order schema version",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/subjects/order-events-v1-value/versions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"subjects",
+						"order-events-v1-value",
+						"versions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query - orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
