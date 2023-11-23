@@ -27,9 +27,11 @@ public class OrderMapper {
         order.setId(event.getOrderId());
         order.setStatus(getStatus(event));
         List<Attribute> attributes = event.getAttributes();
-        OrderItem item = getOrderItem(attributes);
-        item.setOrder(order);
-        order.setItems(List.of(item));
+        if (!CollectionUtils.isEmpty(attributes)) {
+            OrderItem item = getOrderItem(attributes);
+            item.setOrder(order);
+            order.setItems(List.of(item));
+        }
         return order;
     }
 
